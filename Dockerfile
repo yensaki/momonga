@@ -1,4 +1,4 @@
-FROM ruby:2.6.0-preview1
+FROM ruby:2.5.1
 
 ENV APP_ROOT /usr/src/ikakotu
 

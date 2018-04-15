@@ -1,0 +1,27 @@
+version: '2'
+services:
+  app:
+    build: .
+    environment:
+      RAILS_ENV: development
+      DATABASE_URL: mysql2://root:pass@mysql:3306
+      MYSQL_ROOT_PASSWORD: 'pass'
+    ports:
+      - '3000:3000'
+      - '50022:22'
+    volumes:
+      - .:/usr/src/ikakotu
+    links:
+      - mysql
+  mysql:
+    image: "mysql:8.0.4"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'pass'
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mysql-confd:/etc/mysql/conf.d
+volumes:
+  mysql-data:
+    driver: local
