@@ -1,6 +1,6 @@
 FROM ruby:2.5.1
 
-ENV APP_ROOT /usr/src/ikakotu
+ENV APP_ROOT /usr/src/momonga
 
 WORKDIR $APP_ROOT
 

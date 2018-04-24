@@ -10,7 +10,7 @@ services:
       - '3000:3000'
       - '50022:22'
     volumes:
-      - .:/usr/src/ikakotu
+      - .:/usr/src/momonga
     links:
       - mysql
   mysql:

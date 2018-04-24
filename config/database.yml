@@ -14,7 +14,7 @@ default: &default
 
 development:
   <<: *default
-  database: ikakotu_development
+  database: momonga_development
   # user: root
   # password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
 
@@ -23,8 +23,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: ikakotu_test
+  database: momonga_test
 
 production:
   <<: *default
-  database: ikakotu_production
+  database: momonga_production
