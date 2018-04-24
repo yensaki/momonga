@@ -1,0 +1,2 @@
+class TipBody < ApplicationRecord
+end

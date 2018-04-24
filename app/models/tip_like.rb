@@ -1,0 +1,2 @@
+class TipLike < ApplicationRecord
+end
