@@ -25,8 +25,9 @@ gem 'jbuilder', '~> 2.5'
 # slim template
 gem 'slim'
 
-# assets-precompile
+# assets
 gem 'webpacker'
+gem 'bootstrap-sass'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
