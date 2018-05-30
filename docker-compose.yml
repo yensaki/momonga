@@ -22,6 +22,19 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       - ./mysql-confd:/etc/mysql/conf.d
+  webpacker:
+    build: .
+    command: ./bin/webpack-dev-server
+    environment:
+      NODE_ENV: development
+      RAILS_ENV: development
+      WEBPACK_DEV_SERVER_HOST: 0.0.0.0
+      WEBPACK_DEV_SERVER_PUBLIC: 0.0.0.0:3035
+    volumes:
+      - .:/usr/src/momonga
+      - ./node_modules:/usr/src/momonga/node_modules
+    ports:
+      - '3035:3035'
 volumes:
   mysql-data:
     driver: local

@@ -18,7 +18,8 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN apt-get update && \
     apt-get install nodejs
 
-RUN apt-get update && apt-get install -y yarn
+RUN apt-get update && \
+    apt-get install -y yarn
 
 COPY Gemfile $APP_ROOT
 COPY Gemfile.lock $APP_ROOT
@@ -32,10 +33,7 @@ RUN \
   bundle install && \
   rm -rf ~/.gem
 
-ADD package.json $APP
 RUN yarn install
-
-COPY . $APP_ROOT
 
 EXPOSE 3000
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

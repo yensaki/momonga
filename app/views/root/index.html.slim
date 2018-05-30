@@ -1,5 +1,9 @@
-doctype html
-html
-  head
-    = javascript_pack_tag 'application'
-    // = stylesheet_pack_tag 'application'
+= form_for Tip.new, url: tips_path, method: :get do |f|
+  = f.submit '検索'
+
+ul
+  - @tips.each do |tip|
+    li
+      = tip.title
+      - tip.movies.each do |movie|
+        = raw movie.youtube_tag
