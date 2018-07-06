@@ -1,9 +1,12 @@
-= form_for Tip.new, url: tips_path, method: :get do |f|
-  = f.submit '検索'
+.row
+  = form_for Tip.new, url: tips_path, method: :get do |f|
+    = text_field_tag :q
+    = f.submit '検索'
 
-ul
-  - @tips.each do |tip|
-    li
-      = tip.title
-      - tip.movies.each do |movie|
-        = raw movie.youtube_tag
+.row
+  ul.list-group
+    - @tips.each do |tip|
+      li.col-md-6.list-group-item
+        = tip.title
+        - tip.movies.each do |movie|
+          = raw movie.youtube_tag
