@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_24_145116) do
+ActiveRecord::Schema.define(version: 2018_08_06_141422) do
+
+  create_table "keywords", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "word"
+    t.string "kana"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["kana"], name: "index_keywords_on_kana"
+    t.index ["word"], name: "index_keywords_on_word"
+  end
 
   create_table "movies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -30,6 +39,16 @@ ActiveRecord::Schema.define(version: 2018_04_24_145116) do
     t.index ["uid"], name: "index_oauth_authentications_on_uid"
     t.index ["user_id", "provider_id"], name: "index_oauth_authentications_on_user_id_and_provider_id", unique: true
     t.index ["user_id"], name: "index_oauth_authentications_on_user_id"
+  end
+
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.integer "keyword_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["keyword_id"], name: "index_tags_on_keyword_id"
+    t.index ["taggable_type", "taggable_id", "keyword_id"], name: "index_tags_on_taggable_type_and_taggable_id_and_keyword_id", unique: true
   end
 
   create_table "tip_bodies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
