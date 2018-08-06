@@ -32,6 +32,9 @@ gem 'slim'
 gem 'webpacker'
 gem 'bootstrap-sass'
 
+# admin page
+gem 'administrate'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
