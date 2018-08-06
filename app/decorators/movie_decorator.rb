@@ -1,5 +1,10 @@
 module MovieDecorator
-  def youtube_tag
-    content_tag :iframe, '', width: 560, height: 315, src: url, frameborder: 0, allow: 'autoplay; encrypted-media'
+  def youtube_tag(options = {})
+    options[:src] = url
+    options[:width] ||= 560
+    options[:height] ||= 315
+    options[:frameborder] ||= 0
+    options[:allow] ||= 'autoplay; encrypted-media'
+    content_tag :iframe, '', options
   end
 end

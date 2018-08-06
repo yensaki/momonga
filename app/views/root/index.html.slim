@@ -8,11 +8,14 @@
 .row.mb-3
   ul.list-group.mb-3
     - @tips.each do |tip|
-      li.col-md-6.list-group-item
-        .card.mb-4.box-shadow
-          = tip.title
-          - if tip.tip_body
-            p
-              = tip.tip_body.content
-          - tip.movies.each do |movie|
-            = raw movie.youtube_tag
+      .col-md-6.list-group-item
+        .panel.panel-default
+          .panel-heading
+            h3.text-truncate.panel-title
+              = tip.title
+          .panel-body
+            - if tip.tip_body
+              p
+                = tip.tip_body.content
+            - tip.movies.each do |movie|
+              = raw movie.youtube_tag(width: 480, height: 270)
