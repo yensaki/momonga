@@ -4,11 +4,11 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     meta name="viewport" content="width=device-width, initial-scale=1"
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   body
     .page-wrap.container
       header.site-header#header role='banner'
         .navbar.navbar-dark.box-shadow
           = image_tag 'https://dummyimage.com/130x30/000/fff'
+      = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+      = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
       = yield
