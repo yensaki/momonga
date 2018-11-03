@@ -31,13 +31,13 @@ ActiveRecord::Schema.define(version: 2018_08_06_141422) do
 
   create_table "oauth_authentications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "provider_id", null: false
+    t.integer "provider", null: false
     t.string "uid", null: false
     t.text "credentials"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["uid"], name: "index_oauth_authentications_on_uid"
-    t.index ["user_id", "provider_id"], name: "index_oauth_authentications_on_user_id_and_provider_id", unique: true
+    t.index ["user_id", "provider"], name: "index_oauth_authentications_on_user_id_and_provider", unique: true
     t.index ["user_id"], name: "index_oauth_authentications_on_user_id"
   end
 
@@ -107,11 +107,8 @@ ActiveRecord::Schema.define(version: 2018_08_06_141422) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "remember_token"
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
@@ -119,8 +116,6 @@ ActiveRecord::Schema.define(version: 2018_08_06_141422) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

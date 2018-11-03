@@ -13,6 +13,15 @@ html
       header.site-header#header role='banner'
         .navbar.navbar-dark.box-shadow
           = image_tag 'https://dummyimage.com/130x30/000/fff'
+        .navbar.navbar-dark.box-shadow
+          - if user_signed_in?
+            | id:
+            = current_user.id
+            | &nbsp;
+            = current_user.name
+            = link_to "Sign out", destroy_user_session_path(@current_user)
+          - else
+            = link_to "Sign in", user_twitter_omniauth_authorize_path
       = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
       = javascript_pack_tag 'TipComponent'
       = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'

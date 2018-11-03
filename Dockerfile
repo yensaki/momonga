@@ -1,6 +1,7 @@
 FROM ruby:2.5.1
 
 ENV APP_ROOT /usr/src/momonga
+ENV EDITOR vim
 
 WORKDIR $APP_ROOT
 
@@ -19,7 +20,8 @@ RUN apt-get update && \
     apt-get install nodejs
 
 RUN apt-get update && \
-    apt-get install -y yarn
+    apt-get install -y yarn \
+    vim
 
 COPY Gemfile $APP_ROOT
 COPY Gemfile.lock $APP_ROOT
