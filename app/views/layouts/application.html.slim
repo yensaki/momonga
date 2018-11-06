@@ -11,16 +11,19 @@ html
       = flash[:alert]
     .page-wrap.container
       header.site-header#header role='banner'
-        .navbar.navbar-dark.box-shadow
-          = image_tag 'https://dummyimage.com/130x30/000/fff'
-        .navbar.navbar-dark.box-shadow
+        .nav.nav-pills.nav-fill
+          .nav-item
+            = image_tag 'https://dummyimage.com/130x30/000/fff'
           - if user_signed_in?
-            - if current_user.user_icon
-              = image_tag current_user.user_icon.url, height: 30
-            = current_user.name
-            = link_to "Sign out", destroy_user_session_path(@current_user)
+            .nav-item
+              - if current_user.user_icon
+                = image_tag current_user.user_icon.url, height: 30
+              = current_user.name
+            .nav-item
+              = link_to "Sign out", destroy_user_session_path(@current_user), class: 'nav-link'
           - else
-            = link_to "Sign in", user_twitter_omniauth_authorize_path
+            .nav-item
+              = link_to "Sign in", user_twitter_omniauth_authorize_path
       = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
       = javascript_pack_tag 'TipComponent'
       = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
