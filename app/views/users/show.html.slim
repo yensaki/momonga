@@ -1,0 +1,31 @@
+.row
+  .col-sm
+    = image_tag @user&.user_icon&.url, class: 'img rounded-circle', width: 120
+  .col-sm
+    = @user.name
+  .col-sm.text-center.text-justify
+    / twitter
+    = link_to 'Twitter', '#'
+.card
+  .card-header
+    | ウデマエ
+  ul.list-group
+    li.list-group-item
+      | ガチエリア
+    li.list-group-item
+      | ガチヤグラ
+    li.list-group-item
+      | ガチホコ
+    li.list-group-item
+      | ガチアサリ
+
+.card
+  .card-header
+    | コツ
+  ul.list-group
+    li.list-group-item
+      .card
+        .card-title
+          | タイトル
+        .card-body
+          | 本文
