@@ -5,25 +5,29 @@ html
     = csp_meta_tag
     meta name="viewport" content="width=device-width, initial-scale=1"
   body
-    p.notice
-      = flash[:notice]
-    p.alert
-      = flash[:alert]
     .page-wrap.container-fluid
-      header.site-header#header role='banner'
-        .nav.nav-pills.nav-fill
+      nav.navbar.navbar-light.navbar-expand-lg.nav-pills.nav-fill.bg-light
+        = link_to root_url, class: 'nabvar-brand' do
+          = image_tag 'https://dummyimage.com/130x30/000/fff'
+          | イカコツ
+        .navbar-nav.mr-auto.mt-lg-0
+        - if user_signed_in?
           .nav-item
-            = image_tag 'https://dummyimage.com/130x30/000/fff'
-          - if user_signed_in?
-            .nav-item
-              - if current_user.user_icon
-                = image_tag current_user.user_icon.url, height: 30
-              = current_user.name
-            .nav-item
-              = link_to "Sign out", destroy_user_session_path(@current_user), class: 'nav-link'
-          - else
-            .nav-item
-              = link_to "Sign in", user_twitter_omniauth_authorize_path
+            - if current_user.user_icon
+              = image_tag current_user.user_icon.url, height: 30
+            = current_user.name
+          .nav-item
+            = link_to "Sign out", destroy_user_session_path(@current_user), class: 'nav-link'
+        - else
+          li.nav-item
+            = link_to "Sign in", user_twitter_omniauth_authorize_path, class: 'nav-link'
+
+      - if flash[:notice]
+        p.notice
+          = flash[:notice]
+      - if flash[:alert]
+        p.alert
+          = flash[:alert]
       = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
       = javascript_pack_tag 'TipComponent'
       = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
