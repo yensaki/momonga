@@ -14,6 +14,8 @@ class OauthAuthentication < ApplicationRecord
       user_icon = instance.user.user_icon || instance.user.build_user_icon
       user_icon.url = data.info[:image]
       user_icon.save!
+      user_social = instance.user.user_social || instance.user.build_user_social
+      user_social.update!(twitter: data.info[:nickname])
       instance.update!(credentials: data.credentials.to_h)
     end
   end

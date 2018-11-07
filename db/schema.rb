@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_06_141422) do
+ActiveRecord::Schema.define(version: 2018_11_07_001918) do
 
   create_table "keywords", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "word"
@@ -103,6 +103,14 @@ ActiveRecord::Schema.define(version: 2018_08_06_141422) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "type"], name: "index_user_ranks_on_user_id_and_type", unique: true
     t.index ["user_id"], name: "index_user_ranks_on_user_id"
+  end
+
+  create_table "user_socials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "twitter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_socials_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
