@@ -5,4 +5,6 @@ class Tip < ApplicationRecord
   has_one :tip_body, dependent: :destroy
   has_many :tags, as: :taggable
   has_many :keywords, through: :tags
+
+  accepts_nested_attributes_for :tip_body
 end

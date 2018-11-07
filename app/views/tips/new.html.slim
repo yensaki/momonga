@@ -1,0 +1,12 @@
+= form_with model: @tip do |f|
+  .form-group-lg.mx-sm-3
+    label
+      | タイトル
+    = f.text_field :title, class: 'form-control'
+  .form-group-lg
+    label
+      | 本文
+    = f.fields_for :tip_body, f.object.tip_body || f.object.build_tip_body do |ff|
+      = ff.text_area :content, class: 'form-control'
+  .form-group-lg
+    = f.submit '投稿'
