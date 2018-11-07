@@ -6,7 +6,7 @@
   .col-sm.text-center.text-justify
     / twitter
     - if @user.user_social
-      = link_to 'Twitter', @user.user_social.twitter_url
+      = link_to 'Twitter', @user.user_social.twitter_url, target: :_blank, rel: :no_opener
 .card
   .card-header
     | ウデマエ
