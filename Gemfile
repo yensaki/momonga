@@ -60,6 +60,10 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-remote'
+
+  # test data
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -77,9 +81,6 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-
-  # test data
-  gem 'factory_bot_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
