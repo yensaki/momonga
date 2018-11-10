@@ -10,6 +10,8 @@
 .card
   .card-header
     | ウデマエ
+    - if @user == current_user
+      = link_to '登録', user_ranks_path, class: 'btn btn-outline-dark'
   ul.list-group
     - UserRank.gachi_rules.keys.each do |gachi_rule|
       li.list-group-item
