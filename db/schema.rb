@@ -96,12 +96,12 @@ ActiveRecord::Schema.define(version: 2018_11_07_001918) do
 
   create_table "user_ranks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "type", null: false
+    t.integer "gachi_rule", null: false
     t.integer "rank", null: false
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "type"], name: "index_user_ranks_on_user_id_and_type", unique: true
+    t.index ["user_id", "gachi_rule"], name: "index_user_ranks_on_user_id_and_gachi_rule", unique: true
     t.index ["user_id"], name: "index_user_ranks_on_user_id"
   end
 

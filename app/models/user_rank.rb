@@ -1,7 +1,7 @@
 class UserRank < ApplicationRecord
   belongs_to :user
 
-  enum type: { area: 1, yagura: 2, hoko: 3, asari: 4 }
+  enum gachi_rule: { area: 1, yagura: 2, hoko: 3, asari: 4 }
   enum rank: {
     c_minus: 0,
     c: 1,
