@@ -13,6 +13,12 @@ class UserRanksController < ApplicationController
   end
 
   def update
+    user_rank = current_user.user_ranks.find(params[:id])
+
+    if user_rank.update(rank_params)
+      flash[:notice] = '登録しました'
+    end
+    redirect_to user_ranks_url
   end
 
   private

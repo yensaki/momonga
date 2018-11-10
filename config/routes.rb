@@ -24,5 +24,5 @@ Rails.application.routes.draw do
 
   resources :tips
   resources :users, only: %i(show)
-  resources :user_ranks, only: %i(index create show)
+  resources :user_ranks, only: %i(index create show update)
 end
