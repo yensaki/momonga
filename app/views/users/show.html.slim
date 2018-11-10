@@ -11,14 +11,14 @@
   .card-header
     | ウデマエ
   ul.list-group
-    li.list-group-item
-      | ガチエリア
-    li.list-group-item
-      | ガチヤグラ
-    li.list-group-item
-      | ガチホコ
-    li.list-group-item
-      | ガチアサリ
+    - UserRank.gachi_rules.keys.each do |gachi_rule|
+      li.list-group-item
+        = t("user_ranks.gachi_rules.#{gachi_rule}")
+        - user_rank = @user.user_ranks.find(&:"#{gachi_rule}?")
+        p
+          - if user_rank
+            = user_rank.rank
+            = user_rank.score
 
 .card
   .card-header
