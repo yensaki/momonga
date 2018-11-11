@@ -11,6 +11,11 @@ module Momonga
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    config.i18n.tap do |i18n|
+      i18n.default_locale = :ja
+      i18n.load_path += Dir[config.root.join('config/locales/**/*.yml').to_s]
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

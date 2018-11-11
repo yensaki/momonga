@@ -15,11 +15,11 @@
   ul.list-group
     - UserRank.gachi_rules.keys.each do |gachi_rule|
       li.list-group-item
-        = t("user_ranks.gachi_rules.#{gachi_rule}")
+        = t("activerecord.attributes.user_rank/gachi_rule.#{gachi_rule}")
         - user_rank = @user.user_ranks.find(&:"#{gachi_rule}?")
         p
           - if user_rank
-            = user_rank.rank
+            = t("activerecord.attributes.user_rank/rank.#{user_rank.rank}")
             = user_rank.score
 
 .card

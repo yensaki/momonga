@@ -1,0 +1,25 @@
+en:
+  activerecord:
+    attributes:
+      user_rank:
+        gachi_rule: ガチルール
+        rank: ランク
+        score: スコア
+      user_rank/gachi_rule:
+        area: ガチエリア
+        yagura: ガチヤグラ
+        hoko: ガチホコ
+        asari: ガチアサリ
+      user_rank/rank:
+        c_minus: C-
+        c: C
+        c_plus: C+
+        b_minus: B-
+        b: B
+        b_plus: B+
+        a_minus: A-
+        a: A
+        a_plus: A+
+        s: S
+        s_plus: S+
+        x: X

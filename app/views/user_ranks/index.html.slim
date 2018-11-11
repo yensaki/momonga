@@ -1,8 +1,8 @@
-- collection = UserRank.ranks.map { |k, v| [t("user_ranks.ranks.#{k}"), k] }
+- collection = UserRank.ranks.map { |k, v| [t("activerecord.attributes.user_rank/rank.#{k}"), k] }
 - UserRank.gachi_rules.keys.each do |key|
   - model = current_user.user_ranks.find(&:"#{key}?") || current_user.user_ranks.build(gachi_rule: key)
   = form_with model: model do |f|
-    = t("user_ranks.gachi_rules.#{key}")
+    = t("activerecord.attributes.user_rank/gachi_rule.#{key}")
     = f.hidden_field :gachi_rule
     .form-group
       = f.select :rank, collection, include_blank: true
