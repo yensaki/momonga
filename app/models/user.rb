@@ -6,8 +6,4 @@ class User < ApplicationRecord
   has_one :user_icon, dependent: :destroy
   has_one :user_social, dependent: :destroy
   has_many :user_ranks, dependent: :destroy
-
-  def self.find_for_auth(auth)
-
-  end
 end

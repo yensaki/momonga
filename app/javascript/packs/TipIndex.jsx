@@ -10,6 +10,7 @@ export default class TipIndex extends React.PureComponent {
         }
         this.onSearch = this.onSearch.bind(this)
         this.onChange = this.onChange.bind(this)
+        this.input = React.createRef()
     }
 
     render() {
@@ -17,7 +18,7 @@ export default class TipIndex extends React.PureComponent {
             <div>
                 <div className='container'>
                     <div className='form-group'>
-                        <input type='text' name='q' className='form-control' />
+                        <input type='text' name='q' className='form-control' ref={this.input} />
                     </div>
                     <div className='form-group'>
                         <button
@@ -25,6 +26,7 @@ export default class TipIndex extends React.PureComponent {
                             name="commit"
                             className="btn btn-primary"
                             onClick={this.onSearch}
+                            onChange={this.onChange}
                         >検索</button>
                     </div>
 
@@ -47,12 +49,16 @@ export default class TipIndex extends React.PureComponent {
 
     onSearch = function(e) {
         e.preventDefault
-        Axios.get('/tips.json')
-            .then(response => {
-                console.log('status:', response.status)
-                console.log('body:', response.data)
-                this.setState({tips: response.data})
-            })
+        Axios.get('/tips.json', {
+            params: {
+                q: this.input.current.value
+            }
+        })
+        .then(response => {
+            console.log('status:', response.status)
+            console.log('body:', response.data)
+            this.setState({tips: response.data})
+        })
     }
 
     onChange = function(e) {
