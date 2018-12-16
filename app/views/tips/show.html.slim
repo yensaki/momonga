@@ -1,0 +1,23 @@
+.card
+  - unless @tip.tip_movies.empty?
+    .card-img-top
+  .crad-header
+    .container-fluid.row
+      .col-sm-2
+        = link_to user_path(@tip.user) do
+          = image_tag @tip.user.user_icon.url, width: 96
+          = @tip.user.name
+      .col-sm-10
+        .row
+          - UserRank.gachi_rules.keys.each do |gachi_rule|
+            .col-sm-3.align-bottom
+              = t("activerecord.attributes.user_rank/gachi_rule.#{gachi_rule}")
+              - user_rank = @tip.user.user_ranks.find(&:"#{gachi_rule}?")
+              - if user_rank
+                = t("activerecord.attributes.user_rank/rank.#{user_rank.rank}")
+                = user_rank.score
+  .card-header
+    = @tip.title
+  .card-body
+    p.card-text
+      = simple_format(@tip.tip_body&.content)

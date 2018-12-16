@@ -38,6 +38,7 @@ export default class TipIndex extends React.PureComponent {
                                 key={i}
                                 tip={tip}
                                 title={tip.title}
+                                url={tip.url}
                                 youtube_urls={tip.youtube_urls}
                             />
                         ))}

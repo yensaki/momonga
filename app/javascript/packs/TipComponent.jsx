@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 
 export default class TipComponent extends React.PureComponent {
     static propTypes = {
-        title: PropTypes.string
+        title: PropTypes.string,
+        url: PropTypes.string
     }
 
     render() {
@@ -11,12 +12,14 @@ export default class TipComponent extends React.PureComponent {
             <div className='card col-md-6'>
                 <div className='card-header'>
                     <h3 className='panel-title'>
-                        {this.props.title}
+                        <a href={this.props.url}>
+                            {this.props.title}
+                        </a>
                     </h3>
                 </div>
                 <div className='panel-body'>
                     {this.props.youtube_urls.map((url, i) => (
-                        <div>
+                        <div className='youtube-iframe'>
                             <iframe
                                 src={url}
                                 allow="autoplay; encrypted-media"
